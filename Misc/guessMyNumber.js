@@ -1,4 +1,4 @@
-const generatedNumber = Math.floor(Math.random() * 100)
+const generatedNumber = Math.floor(Math.random() * 100);
 const MAX_ATTEMPS = 10;
 
 const readline = require('readline').createInterface({
@@ -13,7 +13,12 @@ function guessNumber(count=0) {
 }
 
 function processFunc(curNum, count) {
-    if(count === MAX_ATTEMPS){
+    if(isNaN(curNum)){
+        console.log(`Attempt ${count+1}: Please enter valid number.`);
+        count+=1;
+        guessNumber(count);
+    }
+    else if(count === MAX_ATTEMPS){
         console.log(`You lost !!. You tried ${count} times. Please try again !!`);
         readline.close();
     }
